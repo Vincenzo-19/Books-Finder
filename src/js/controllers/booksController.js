@@ -36,7 +36,7 @@ export const getBookDetails = async (req, res) => {
     let bookKey = req.params.key;
 
     try {
-        // Effettua una richiesta GET all'API di Open Library utilizzando la chiave del libro
+        // Effettua una richiesta get all'API di Open Library utilizzando la key del libro
         const RESPONSE = await axios.get(`https://openlibrary.org/works/${bookKey}.json`);
         let bookDetails = {
             description: RESPONSE.data.description ? RESPONSE.data.description.value : 'Nessuna descrizione disponibile',
