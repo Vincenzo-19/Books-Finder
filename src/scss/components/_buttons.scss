@@ -1,21 +1,39 @@
-.search-button {
-    position: absolute;
-    background-color : transparent;
+.button {
     border: 3px solid $secondary-color;
-    border-radius: 0px 20px 20px 0px;
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
-    color: white;
     cursor: pointer;
     outline: none;
     transition: background-color 0.1s ease-in-out;
+}
+
+.button:hover {
+    background-color: $secondary-color;
+}
+
+.button:active {
+    background-color: #4caf4fbb;
+}
+
+.button.search-button {
+    color: white;
+    background-color: transparent;
+    border-radius: 0px 20px 20px 0px;
 }
 
 .search-button:hover {
   background-color: $secondary-color;
 }
 
-.search-button:active{
-    background-color: #4caf4fbb;
+.search-button:active {
+  background-color: #4caf4fbb;
+}
+
+
+.button.card-button {
+    color: black;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-top: 10px;
 }

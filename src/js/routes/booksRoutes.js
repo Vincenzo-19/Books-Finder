@@ -1,4 +1,6 @@
 import express from 'express';
+
+// importiamo i controller
 import { getBooks, getBookDetails } from '../controllers/booksController.js';
 
 const ROUTER = express.Router();

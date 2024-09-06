@@ -1,0 +1,47 @@
+// mobile
+
+@media (max-width: 320px) {
+    .card {
+        width: 90% !important;
+
+    }
+
+    h1{
+        font-size: 2.5rem !important;
+    }
+
+    .search-bar, .button{
+        padding: 6px !important;
+        font-size: 12px !important;
+    }
+}
+
+@media (min-width: 321px) {
+    .card {
+        width: 70% !important;
+    }
+
+    h1{
+        font-size: 3rem !important;
+    }
+
+    .search-bar, .button{
+        padding: 8px !important;
+        font-size: 14px !important;
+    }
+}
+
+  
+// tablet
+  @media (min-width: 577px) {
+    .card {
+      width: 50%;
+    }
+  }
+  
+// desktop
+  @media (min-width: 769px) {
+    .card {
+      width: 33.33%;
+    }
+  }
