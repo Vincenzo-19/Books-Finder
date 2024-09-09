@@ -20,7 +20,7 @@ export const getBooks = async (req, res) => {
             const BOOKS = RESPONSE.data.docs.map(book => ({
                 key: book.key,
                 title: book.title,
-                authors: book.author_name ? book.author_name.join(', ') : 'Unknown'
+                authors: book.author_name ? book.author_name.join(', ') : 'Unknown',
             }));
             // invia la risposta dei libri come json
             res.json(BOOKS);

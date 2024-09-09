@@ -20,11 +20,18 @@ const config = {
         static: {
             directory: path.resolve(__dirname, 'dist'),
         },
-        port: 8080,
+        port: 3001,
+        proxy: [
+            {
+                context: ['/api'],
+                target: 'http://localhost:3000',
+            },
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html',
+            inject: 'body',
         }),
 
         // Add your plugins here

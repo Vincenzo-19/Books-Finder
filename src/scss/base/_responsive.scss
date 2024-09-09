@@ -16,7 +16,7 @@
     }
 }
 
-@media (min-width: 321px) {
+@media (min-width: 321px) and (max-width: 525px) {
     .card {
         width: 70% !important;
     }
@@ -33,15 +33,22 @@
 
   
 // tablet
-  @media (min-width: 577px) {
+  @media (min-width: 526px) and (max-width: 768px) {
     .card {
-      width: 50%;
+      width: 50% !important;
     }
   }
   
 // desktop
-  @media (min-width: 769px) {
+  @media (min-width: 769px) and (max-width: 1024px) {
     .card {
-      width: 33.33%;
+      width: 33.33% !important;
+    }
+  }
+
+
+  @media (min-width: 1025px) {
+    .card {
+      width: 25% !important; 
     }
   }

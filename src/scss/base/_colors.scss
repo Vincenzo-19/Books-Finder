@@ -2,4 +2,8 @@
     $secondary-color: #4CAF50;
     $third-color: #274C77;
     $fourth-color: #e3f0fa;
+
+    :root {
+        --secondary-color: #{$secondary-color};
+    }
  
