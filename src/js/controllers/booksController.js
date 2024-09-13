@@ -39,11 +39,17 @@ export const getBookDetails = async (req, res) => {
         // Effettua una richiesta get all'API di Open Library utilizzando la key del libro
         const RESPONSE = await axios.get(`https://openlibrary.org/works/${bookKey}.json`);
         let bookDetails = {
-            description: RESPONSE.data.description ? RESPONSE.data.description.value : 'Nessuna descrizione disponibile',
+            description: RESPONSE.data.description ? RESPONSE.data.description : 'Nessuna descrizione disponibile',
         };
-        // invia i dettagli dei libri come risposta json 
-        res.json(bookDetails);
+
+        if (bookDetails.description === 'https://openlibrary.org/works/OL2895536W') {
+            const CORRECT_KEY_RESPONSE = await axios.get(`https://openlibrary.org/works/OL32083873M.json`);
+            bookDetails.description = CORRECT_KEY_RESPONSE.data.description ? CORRECT_KEY_RESPONSE.data.description : 'Nessuna descrizione disponibile';
+        }
+            res.json(bookDetails);
     } catch (error) {
         res.status(500).send('Errore durante il recupero dei dati');
     }
 };
+
+
