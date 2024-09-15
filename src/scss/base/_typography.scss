@@ -1,11 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Imprima&display=swap');
+
+// importazione dei font
+
+h1, h2, h5, .modal-title{
+    font-family: 'Catamaran', sans-serif;
+}
+
+p, .modal-author, .card-author{
+    font-family: 'Imprima', sans-serif;
+}
+
+// modifiche della grandezza o del colore del font
+
 h1{
     font-size: 3.5rem;
     font-weight: bold;
     color: $secondary-color;
 }
 
-.card-text{
-    font-size: 10px !important;
+.card-author{
+    font-size: 12px !important;
 }
 
 .modal-title{

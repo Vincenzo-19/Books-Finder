@@ -1,9 +1,10 @@
 import './scss/index.scss'
 import axios from 'axios'
+import handleButtonEvents from '../src/js/components/buttons.js';
 
 const SEARCH_BUTTON = document.querySelector('.search-button')
 
-// Creazione delle cards
+// raccolta dei libri con genere fantasy
 
 SEARCH_BUTTON.addEventListener('click', async (event) => {
     console.log('pulsante premuto')
@@ -30,6 +31,8 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
     }
 })
 
+// funzione che genera le cards
+
 function createCards(BOOKS) {
     const RESULTS = document.querySelector('.results')
     RESULTS.innerHTML = `
@@ -37,13 +40,15 @@ function createCards(BOOKS) {
         <div class="card-container col-sm-6"></div>
     </div>`
 
+    // forEach usato per creare una card per ogni libro trovato 
+
     BOOKS.forEach((book) => {
         const CARD = document.createElement('div')
         CARD.classList.add('card')
         CARD.innerHTML = `
                 <div class="card-body">
                     <h5 class="card-title">${book.title}</h5>
-                    <p class="card-text">di <strong>${book.authors}</strong></p>
+                    <p class="card-author">di <strong>${book.authors}</strong></p>
                     <button
                     class="button card-button"
                     data-book-key="${book.key}"
@@ -60,7 +65,7 @@ function createCards(BOOKS) {
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">${book.title}</h1>
+                                    <h2 class="modal-title" id="staticBackdropLabel">${book.title}</h2>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body"></div>
@@ -72,13 +77,14 @@ function createCards(BOOKS) {
         document.querySelector('.card-container').appendChild(CARD)
     })
 
+    // funzione che gestisce i pulsanti 'Descrizione' all'interno della card
+
     document.querySelectorAll('.card-button').forEach((button) => {
         button.addEventListener('click', async (event) => {
             event.preventDefault()
             console.log('card-button premuto')
 
             let bookKey = event.target.getAttribute('data-book-key')
-            let title = event.target.getAttribute('data-title')
             let author = event.target.getAttribute('data-author')
 
             try {
@@ -104,11 +110,6 @@ function createCards(BOOKS) {
     })
 }
 
-document.querySelectorAll('.button').forEach(button => {
-    button.addEventListener('touchstart', () => {
-        button.style.backgroundColor = '#4caf4fbb';
-    });
-    button.addEventListener('touchend', () => {
-        button.style.backgroundColor = 'transparent';
-    });
-});
+// utilizzo della funzione per i bottoni sui mobile screens
+
+handleButtonEvents();
