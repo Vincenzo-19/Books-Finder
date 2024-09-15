@@ -7,27 +7,25 @@ const SEARCH_BUTTON = document.querySelector('.search-button')
 // raccolta dei libri con genere fantasy
 
 SEARCH_BUTTON.addEventListener('click', async (event) => {
-    console.log('pulsante premuto')
+
     event.preventDefault()
 
     const GENRE_INPUT = document
         .querySelector('#genre-input')
         .value.toLowerCase()
-    console.log('Genere inserito:', GENRE_INPUT) // Log del genere inserito
 
     if (GENRE_INPUT === 'fantasy') {
         try {
             const RESPONSE = await axios.get('/api/books')
 
             const BOOKS = RESPONSE.data // Usa RESPONSE.data invece di RESPONSE.json()
-            console.log('Libri ricevuti:', BOOKS) // Log dei libri ricevuti
 
             createCards(BOOKS)
         } catch (error) {
             console.error('Errore durante il recupero dei dati:', error)
         }
     } else {
-        console.log('Genere non corrispondente') // Log se il genere non è "fantasy"
+        console.log('Genere non corrispondente')
     }
 })
 
@@ -64,10 +62,6 @@ function createCards(BOOKS) {
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <h2 class="modal-title" id="staticBackdropLabel">${book.title}</h2>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
                                 <div class="modal-body"></div>
                             </div>
                         </div>
@@ -81,9 +75,8 @@ function createCards(BOOKS) {
 
     document.querySelectorAll('.card-button').forEach((button) => {
         button.addEventListener('click', async (event) => {
-            event.preventDefault()
-            console.log('card-button premuto')
 
+            let title = event.target.getAttribute('data-title')
             let bookKey = event.target.getAttribute('data-book-key')
             let author = event.target.getAttribute('data-author')
 
@@ -99,10 +92,17 @@ function createCards(BOOKS) {
                     description = RESPONSE.data.description
                 }
 
-                const MODAL_BODY = document.querySelector('.modal-body')
-                MODAL_BODY.innerHTML = `<p class='modal-description'><strong>Descrizione</strong><p>
-                                        <p>${description}</p> 
-                                        <p class='modal-author'>pubblicato da <strong>${author}</strong></p> `
+                const MODAL_CONTENT = document.querySelector('.modal-content')
+                MODAL_CONTENT.innerHTML = `
+                                        <div class="modal-header">
+                                            <h2 class="modal-title">${title}</h2>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class='modal-description'><strong>Descrizione</strong><p>
+                                            <p>${description}</p> 
+                                            <p class='modal-author'>scritto da <strong>${author}</strong></p>
+                                        </div>`
             } catch (error) {
                 console.error('Errore durante il recupero dei dati:', error)
             }
