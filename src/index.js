@@ -16,7 +16,7 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
 
     if (GENRE_INPUT === 'fantasy') {
         try {
-            const RESPONSE = await axios.get('/api/books')
+            const RESPONSE = await axios.get('https://books-finder-backend.onrender.com/api/books')
 
             const BOOKS = RESPONSE.data // Usa RESPONSE.data invece di RESPONSE.json()
 
