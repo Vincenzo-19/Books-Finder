@@ -13,6 +13,7 @@ const config = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
+        publicPath: '',
     },
     devServer: {
         open: true,
@@ -34,9 +35,7 @@ const config = {
             favicon: './src/img/favicon.png',
             inject: 'body',
         }),
-
-        // Add your plugins here
-        // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+        ...(isProduction ? [new MiniCssExtractPlugin({ filename: 'main.css' })] : []),
     ],
     module: {
         rules: [
@@ -77,12 +76,6 @@ const config = {
 module.exports = () => {
     if (isProduction) {
         config.mode = 'production'
-
-        config.plugins.push(
-            new MiniCssExtractPlugin({
-                filename: 'main.css',
-            })
-        )
     } else {
         config.mode = 'development'
     }
