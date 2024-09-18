@@ -24,12 +24,13 @@ const config = {
             secure: false,
         },
         port: 3001,
-        proxy: [
-            {
-                context: ['/api'],
-                target: 'http://localhost:3000',
+        proxy: {
+            '/api': {
+                target: 'https://books-finder-backend.onrender.com',
+                changeOrigin: true,
+                secure: false,
             },
-        ],
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
