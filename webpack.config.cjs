@@ -20,6 +20,8 @@ const config = {
         host: 'localhost',
         static: {
             directory: path.resolve(__dirname, 'dist'),
+            changeOrigin: true,
+            secure: false,
         },
         port: 3001,
         proxy: [
