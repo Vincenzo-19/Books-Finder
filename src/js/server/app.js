@@ -6,7 +6,7 @@ import { EventEmitter } from 'events';
 EventEmitter.defaultMaxListeners = 20;
 
 APP.use(express.json());
-
+APP.use(express.static('dist'));
 APP.use('/api/', booksRoutes);
 
 APP.listen(3000, () => {
