@@ -2,12 +2,12 @@
 
 function handleButtonEvents() {
     document.querySelectorAll('.button').forEach(button => {
-        button.addEventListener('touchstart', {passive: true}, () => {
+        button.addEventListener('touchstart', () => {
             button.style.backgroundColor = '#4caf4fbb';
-        });
-        button.addEventListener('touchend', {passive: true}, () => {
+        }, {passive: true});
+        button.addEventListener('touchend', () => {
             button.style.backgroundColor = 'transparent';
-        });
+        }, {passive: true});
     });
 }
 
