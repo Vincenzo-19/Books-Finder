@@ -5,6 +5,14 @@
 
 <img src="/src/img/screenshotBooksFinder.png" alt="Screenshot Books Finder">
 
+<p>Qui sotto c'è il link per il Books Finder⬇️</p>
+
+https://vincenzo-19.github.io/Books-Finder/
+
+<p>Qui sotto c'è il link per la presentazione⬇️</p>
+
+https://1drv.ms/b/c/2151af0b03d46d87/EVpm9lxq43JGpzKUbtaJYmsBbVzcQb6d6UTtQg2yaKCjow?e=dAxYer
+
 <h2>Tecnologie utilizzate</h2>
 
 <ul>

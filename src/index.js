@@ -81,7 +81,7 @@ function createCards(BOOKS) {
             let author = event.target.getAttribute('data-author')
 
             try {
-                const RESPONSE = await axios.get(`api/book${bookKey}`)
+                const RESPONSE = await axios.get(`https://books-finder-backend.onrender.com/api/book${bookKey}`)
                 let description
                 if (
                     RESPONSE.data.description &&
