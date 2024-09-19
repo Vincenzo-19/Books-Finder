@@ -18,7 +18,7 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
         try {
             const RESPONSE = await axios.get('https://books-finder-backend.onrender.com/api/books')
 
-            const BOOKS = RESPONSE.data // Usa RESPONSE.data invece di RESPONSE.json()
+            const BOOKS = RESPONSE.data
 
             createCards(BOOKS)
         } catch (error) {
@@ -81,7 +81,7 @@ function createCards(BOOKS) {
             let author = event.target.getAttribute('data-author')
 
             try {
-                const RESPONSE = await axios.get(`api/book/${bookKey}`)
+                const RESPONSE = await axios.get(`api/book${bookKey}`)
                 let description
                 if (
                     RESPONSE.data.description &&
