@@ -19,18 +19,12 @@ const config = {
         open: true,
         host: 'localhost',
         static: {
-            directory: path.resolve(__dirname, 'dist'),
-            changeOrigin: true,
-            secure: false,
-        },
-        port: 3001,
-        proxy: {
-            '/api': {
-                target: 'https://books-finder-backend.onrender.com',
-                changeOrigin: true,
-                secure: false,
-            },
-        },
+            directory: 'dist',
+            publicPath: '/',
+            serveIndex: true,
+            watch: true,
+          },
+        port: 3000,
     },
     plugins: [
         new HtmlWebpackPlugin({

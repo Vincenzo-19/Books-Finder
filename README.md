@@ -1,7 +1,7 @@
 <h1>Books Finder</h1>
 
 <h2>Descrizione del progetto</h2>
-<p>Books Finder è un sito web che consente di cercare libri di un solo genere, ovvero <strong>'fantasy'</strong>, e visualizzare i libri ottenuti da una richiesta API.</p>
+<p>Books Finder è un sito web che consente di cercare libri di un genere specifico, e visualizzare i libri ottenuti da una richiesta API.</p>
 
 <img src="/src/img/screenshotBooksFinder.png" alt="Screenshot Books Finder">
 
@@ -24,7 +24,6 @@ https://1drv.ms/b/c/2151af0b03d46d87/EQ_T1AdS5cJJvsZ4iQ28gSYB6g_hvxlOXxlfnqbe6K4
     <li>Pacchetti npm:
         <ul>
             <li>axios</li>
-            <li>express</li>
         </ul>
     </li>
     <li>Bundler: Webpack</li>
@@ -33,7 +32,7 @@ https://1drv.ms/b/c/2151af0b03d46d87/EQ_T1AdS5cJJvsZ4iQ28gSYB6g_hvxlOXxlfnqbe6K4
 <h2>Funzionalità</h2>
 
 <ul>
-    <li>Inserimento del genere 'fantasy' per la ricerca di libri</li>
+    <li>Inserimento del genere per la ricerca di libri</li>
     <li>Connessione a un'API per ottenere i risultati della ricerca</li>
     <li>Visualizzazione dei libri trovati</li>
 </ul>

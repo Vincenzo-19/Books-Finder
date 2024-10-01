@@ -1,115 +1,69 @@
 import './scss/index.scss'
 import axios from 'axios'
-import handleButtonEvents from '../src/js/components/buttons.js';
+import handleButtonEvents from '../src/js/components/buttons.js'
+import createCards from '../src/js/utils/createCards.js'
+import getBookDescription from '../src/js/utils/getBookDescription.js'
 
 const SEARCH_BUTTON = document.querySelector('.search-button')
+const LOADER = document.getElementById('loader')
+const ERROR_MESSAGE = document.getElementById('error-message');
 
-// raccolta dei libri con genere fantasy
 
 SEARCH_BUTTON.addEventListener('click', async (event) => {
-
     event.preventDefault()
 
-    const GENRE_INPUT = document
-        .querySelector('#genre-input')
-        .value.toLowerCase()
+    let genreInput = document.querySelector('#genre-input').value.toLowerCase()
 
-    if (GENRE_INPUT === 'fantasy') {
-        try {
-            const RESPONSE = await axios.get('https://books-finder-backend.onrender.com/api/books')
+    LOADER.style.display = 'block'
+    ERROR_MESSAGE.style.display = 'none'
 
-            const BOOKS = RESPONSE.data
+    // controllo input se è vuoto oppure un numero
+    if (genreInput === '' || !isNaN(genreInput)) {
+        ERROR_MESSAGE.textContent = `L'input inserito è errato! Inserisci un genere valido, ad es. 'Fantasy'`;
+        ERROR_MESSAGE.style.display = 'block';
+        setTimeout(() => {
+            ERROR_MESSAGE.style.display = 'none';
+        }, 3000);
+        LOADER.style.display = 'none';
+        return;
+    }
 
-            createCards(BOOKS)
-        } catch (error) {
-            console.error('Errore durante il recupero dei dati:', error)
+
+    try {
+        // ottengo i libri dal genere inserito
+        let response = await axios.get(
+            `https://openlibrary.org/search.json?q=${genreInput}&limit=10`
+        )
+        let books = response.data.docs
+
+        // controllo se il genere esiste
+        if (!books.length) {
+            ERROR_MESSAGE.textContent = `Il genere inserito non esiste!`;
+            ERROR_MESSAGE.style.display = 'block';
+            setTimeout(() => {
+                ERROR_MESSAGE.style.display = 'none';
+            }, 3000);
+            LOADER.style.display = 'none';
+            return;
         }
-    } else {
-        console.log('Genere non corrispondente')
+
+        // ottengo le descrizioni dei libri
+        const booksWithDescriptions = await Promise.all(
+            books.map(async (book) => {
+                let description = await getBookDescription(book.key)
+                return { ...book, description }
+            })
+        )
+ 
+        createCards(booksWithDescriptions)
+    } catch (error) {
+        console.error('Errore durante il recupero dei dati:', error)
+    } finally {
+        LOADER.style.display = 'none'
     }
 })
 
-// funzione che genera le cards
 
-function createCards(BOOKS) {
-    const RESULTS = document.querySelector('.results')
-    RESULTS.innerHTML = `
-    <div class="row">
-        <div class="card-container col-sm-6"></div>
-    </div>`
+// gestione dei pulsanti per i touch screen
 
-    // forEach usato per creare una card per ogni libro trovato 
-
-    BOOKS.forEach((book) => {
-        const CARD = document.createElement('div')
-        CARD.classList.add('card')
-        CARD.innerHTML = `
-                <div class="card-body">
-                    <h5 class="card-title">${book.title}</h5>
-                    <p class="card-author">di <strong>${book.authors}</strong></p>
-                    <button
-                    class="button card-button"
-                    data-book-key="${book.key}"
-                    data-title="${book.title}"
-                    data-author="${book.authors}"
-                    data-description="${book.description}"
-                    data-bs-target="#staticBackdrop"
-                    data-bs-toggle="modal"
-                    >
-                        Descrizione
-                    </button>
-
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>`
-
-        document.querySelector('.card-container').appendChild(CARD)
-    })
-
-    // funzione che gestisce i pulsanti 'Descrizione' all'interno della card
-
-    document.querySelectorAll('.card-button').forEach((button) => {
-        button.addEventListener('click', async (event) => {
-
-            let title = event.target.getAttribute('data-title')
-            let bookKey = event.target.getAttribute('data-book-key')
-            let author = event.target.getAttribute('data-author')
-
-            try {
-                const RESPONSE = await axios.get(`https://books-finder-backend.onrender.com/api/book${bookKey}`)
-                let description
-                if (
-                    RESPONSE.data.description &&
-                    RESPONSE.data.description.value
-                ) {
-                    description = RESPONSE.data.description.value
-                } else {
-                    description = RESPONSE.data.description
-                }
-
-                const MODAL_CONTENT = document.querySelector('.modal-content')
-                MODAL_CONTENT.innerHTML = `
-                                        <div class="modal-header">
-                                            <h2 class="modal-title">${title}</h2>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p class='modal-description'><strong>Descrizione</strong><p>
-                                            <p>${description}</p> 
-                                            <p class='modal-author'>scritto da <strong>${author}</strong></p>
-                                        </div>`
-            } catch (error) {
-                console.error('Errore durante il recupero dei dati:', error)
-            }
-        })
-    })
-}
-
-// utilizzo della funzione per i bottoni sui mobile screens
-
-handleButtonEvents();
+handleButtonEvents()

@@ -16,7 +16,7 @@
         <title>Books Finder</title>
         <meta
             name="description"
-            content="Books Finder è un sito web che consente di cercare libri di un solo genere, ovvero 'fantasy', e visualizzare i libri ottenuti in modo semplice e veloce."
+            content="Books Finder è un sito web che consente di cercare libri di un genere specifico, e visualizzare i libri ottenuti in modo semplice e veloce."
         />
 
         <!-- Facebook Meta Tags -->
@@ -28,7 +28,7 @@
         <meta property="og:title" content="Books Finder" />
         <meta
             property="og:description"
-            content="Books Finder è un sito web che consente di cercare libri di un solo genere, ovvero 'fantasy', e visualizzare i libri ottenuti in modo semplice e veloce."
+            content="Books Finder è un sito web che consente di cercare libri di un genere specifico, e visualizzare i libri ottenuti in modo semplice e veloce."
         />
         <meta
             property="og:image"
@@ -45,7 +45,7 @@
         <meta name="twitter:title" content="Books Finder" />
         <meta
             name="twitter:description"
-            content="Books Finder è un sito web che consente di cercare libri di un solo genere, ovvero 'fantasy', e visualizzare i libri ottenuti in modo semplice e veloce."
+            content="Books Finder è un sito web che consente di cercare libri di un genere specifico, e visualizzare i libri ottenuti in modo semplice e veloce."
         />
         <meta
             name="twitter:image"
@@ -71,8 +71,8 @@
                                         type="text"
                                         name="genre-input"
                                         id="genre-input"
-                                        placeholder="Inserisci il genere 'Fantasy'"
-                                        aria-label="Inserisci il genere 'Fantasy'"
+                                        placeholder="Inserisci un genere"
+                                        aria-label="Inserisci un genere"
                                         required
                                     />
                                     <button
@@ -90,6 +90,8 @@
             <section>
                 <div class="results"></div>
             </section>
+            <div id="loader"></div>
+            <div id="error-message">Genere inserito non valido!</div>
         </main>
 
         <script
