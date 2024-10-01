@@ -11,7 +11,7 @@ https://vincenzo-19.github.io/Books-Finder/
 
 <p>Qui sotto c'è il link per la presentazione⬇️</p>
 
-https://1drv.ms/b/c/2151af0b03d46d87/EQ_T1AdS5cJJvsZ4iQ28gSYB6g_hvxlOXxlfnqbe6K4D6Q?e=bUFkJ4
+https://1drv.ms/b/c/2151af0b03d46d87/EcWqzZL90c5KjNPjc-jD8oQBEpDlIZM7QUPLIX8ERGXRcQ?e=xZ9pYz
 
 <h2>Tecnologie utilizzate</h2>
 
