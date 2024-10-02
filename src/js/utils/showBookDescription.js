@@ -5,16 +5,6 @@ const showBookDescription = async (event) => {
     let bookKey = event.target.getAttribute('data-book-key')
     let author = event.target.getAttribute('data-author')
 
-    // assegno una nuova key che rimanda ad una edizione specifica dello stesso libro ma con una descrizione disponibile
-    if (bookKey === '/works/OL2895536W') {
-        bookKey = '/books/OL32083873M'
-    }
-
-    // assegno una nuova key che rimanda ad una edizione specifica dello stesso libro ma con una descrizione disponibile
-    if (bookKey === '/works/OL262463W') {
-        bookKey = '/books/OL39479118M'
-    }
-
     try {
         let description = await getBookDescription(bookKey)
 
