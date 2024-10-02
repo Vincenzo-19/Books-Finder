@@ -48,14 +48,14 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
         }
 
         // ottengo le descrizioni dei libri
-        const booksWithDescriptions = await Promise.all(
+        const BOOKS_WITH_DESCRIPTION = await Promise.all(
             books.map(async (book) => {
                 let description = await getBookDescription(book.key)
                 return { ...book, description }
             })
         )
  
-        createCards(booksWithDescriptions)
+        createCards(BOOKS_WITH_DESCRIPTION)
     } catch (error) {
         console.error('Errore durante il recupero dei dati:', error)
     } finally {
