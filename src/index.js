@@ -17,7 +17,7 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
     LOADER.style.display = 'block'
     ERROR_MESSAGE.style.display = 'none'
 
-    // controllo input se è vuoto oppure un numero
+    // controllo input se è vuoto oppure se contiene un numero
     if (genreInput === '' || !isNaN(genreInput)) {
         ERROR_MESSAGE.textContent = `L'input inserito è errato! Inserisci un genere valido, ad es. 'Fantasy'`;
         ERROR_MESSAGE.style.display = 'block';

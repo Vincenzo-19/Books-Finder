@@ -3,16 +3,22 @@
 @media (max-width: 320px) {
     .card {
         width: 90% !important;
-
     }
 
-    h1{
+    h1 {
         font-size: 2.5rem !important;
     }
 
-    .search-bar, .button{
+    .search-bar,
+    .button {
         padding: 6px !important;
         font-size: 12px !important;
+    }
+
+    #loader {
+        position: fixed !important;
+        bottom: 10px !important;
+        right: 10px !important;
     }
 }
 
@@ -21,34 +27,39 @@
         width: 70% !important;
     }
 
-    h1{
+    h1 {
         font-size: 3rem !important;
     }
 
-    .search-bar, .button{
+    .search-bar,
+    .button {
         padding: 8px !important;
         font-size: 14px !important;
     }
+
+    #loader {
+      position: fixed !important;
+      bottom: 10px !important;
+      right: 10px !important;
+  }
 }
 
-  
 // tablet
-  @media (min-width: 526px) and (max-width: 768px) {
+@media (min-width: 526px) and (max-width: 768px) {
     .card {
-      width: 50% !important;
+        width: 50% !important;
     }
-  }
-  
+}
+
 // desktop
-  @media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .card {
-      width: 33.33% !important;
+        width: 33.33% !important;
     }
-  }
+}
 
-
-  @media (min-width: 1025px) {
+@media (min-width: 1025px) {
     .card {
-      width: 25% !important; 
+        width: 25% !important;
     }
-  }
+}
