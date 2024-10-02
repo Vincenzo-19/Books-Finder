@@ -14,7 +14,10 @@ function createCards(BOOKS) {
         let title = book.title
         let truncatedTitle =
             title.length > 50 ? title.slice(0, 47) + '...' : title
-        let authors = book.author_name ? book.author_name.slice(0, 2).join(', ') : 'Sconosciuto';
+        let authors =
+        Array.isArray(book.authors) && book.authors.length > 0
+        ? book.authors.map(author => author.name).slice(0, 2).join(', ')
+        : 'Sconosciuto'
         card.innerHTML = `
             <div class="card-body">
                 <h5 class="card-title">${truncatedTitle}</h5>
@@ -23,7 +26,7 @@ function createCards(BOOKS) {
                     class="button card-button"
                     data-book-key="${book.key}"
                     data-title="${book.title}"
-                    data-author="${book.author_name ? book.author_name.join(', ') : 'Sconosciuto'}"
+                    data-author="${Array.isArray(book.authors) ? book.authors.map(author => author.name).join(', ') : 'Sconosciuto'}"
                     data-description="${book.description}"
                     data-bs-target="#staticBackdrop"
                     data-bs-toggle="modal"

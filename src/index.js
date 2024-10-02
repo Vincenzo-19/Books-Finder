@@ -12,13 +12,13 @@ const ERROR_MESSAGE = document.getElementById('error-message');
 SEARCH_BUTTON.addEventListener('click', async (event) => {
     event.preventDefault()
 
-    let genreInput = document.querySelector('#genre-input').value.toLowerCase()
+    let subjectInput = document.querySelector('#subject-input').value.toLowerCase()
 
     LOADER.style.display = 'block'
     ERROR_MESSAGE.style.display = 'none'
 
     // controllo input se è vuoto oppure se contiene un numero
-    if (genreInput === '' || !isNaN(genreInput)) {
+    if (subjectInput === '' || !isNaN(subjectInput)) {
         ERROR_MESSAGE.textContent = `L'input inserito è errato! Inserisci un genere valido, ad es. 'Fantasy'`;
         ERROR_MESSAGE.style.display = 'block';
         setTimeout(() => {
@@ -32,9 +32,9 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
     try {
         // ottengo i libri dal genere inserito
         let response = await axios.get(
-            `https://openlibrary.org/search.json?q=${genreInput}&limit=10`
+            `https://openlibrary.org/subjects/${subjectInput}.json?limit=10`
         )
-        let books = response.data.docs
+        let books = response.data.works
 
         // controllo se il genere esiste
         if (!books.length) {
