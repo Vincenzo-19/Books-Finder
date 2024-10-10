@@ -6,28 +6,32 @@ import getBookDescription from '../src/js/utils/getBookDescription.js'
 
 const SEARCH_BUTTON = document.querySelector('.search-button')
 const LOADER = document.getElementById('loader')
-const ERROR_MESSAGE = document.getElementById('error-message');
-
+const ERROR_MESSAGE = document.getElementById('error-message')
 
 SEARCH_BUTTON.addEventListener('click', async (event) => {
     event.preventDefault()
 
-    let subjectInput = document.querySelector('#subject-input').value.toLowerCase()
+    let subjectInput = document
+        .querySelector('#subject-input')
+        .value.toLowerCase()
 
     LOADER.style.display = 'block'
     ERROR_MESSAGE.style.display = 'none'
 
     // controllo input se è vuoto oppure se contiene un numero
-    if (subjectInput === '' || !isNaN(subjectInput) || subjectInput.length < 4) {
-        ERROR_MESSAGE.textContent = `L'input inserito è errato! Inserisci un genere valido, ad es. 'Fantasy'`;
-        ERROR_MESSAGE.style.display = 'block';
+    if (
+        subjectInput === '' ||
+        !isNaN(subjectInput) ||
+        subjectInput.length < 4
+    ) {
+        ERROR_MESSAGE.textContent = `L'input inserito è errato! Inserisci un genere valido, ad es. 'Fantasy'`
+        ERROR_MESSAGE.style.display = 'block'
         setTimeout(() => {
-            ERROR_MESSAGE.style.display = 'none';
-        }, 3000);
-        LOADER.style.display = 'none';
-        return;
+            ERROR_MESSAGE.style.display = 'none'
+        }, 3000)
+        LOADER.style.display = 'none'
+        return
     }
-
 
     try {
         // ottengo i libri dal genere inserito
@@ -38,13 +42,13 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
 
         // controllo se il genere esiste
         if (!books.length) {
-            ERROR_MESSAGE.textContent = `Il genere inserito non esiste!`;
-            ERROR_MESSAGE.style.display = 'block';
+            ERROR_MESSAGE.textContent = `Il genere inserito non esiste!`
+            ERROR_MESSAGE.style.display = 'block'
             setTimeout(() => {
-                ERROR_MESSAGE.style.display = 'none';
-            }, 3000);
-            LOADER.style.display = 'none';
-            return;
+                ERROR_MESSAGE.style.display = 'none'
+            }, 3000)
+            LOADER.style.display = 'none'
+            return
         }
 
         // ottengo le descrizioni dei libri
@@ -54,7 +58,7 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
                 return { ...book, description }
             })
         )
- 
+
         createCards(BOOKS_WITH_DESCRIPTION)
     } catch (error) {
         console.error('Errore durante il recupero dei dati:', error)
@@ -62,7 +66,6 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
         LOADER.style.display = 'none'
     }
 })
-
 
 // gestione dei pulsanti per i touch screen
 
