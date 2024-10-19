@@ -16,9 +16,8 @@
     }
 
     #loader {
-        position: fixed !important;
-        bottom: 10px !important;
-        right: 10px !important;
+        margin: auto;
+        margin-top: 50px;
     }
 }
 
@@ -38,10 +37,9 @@
     }
 
     #loader {
-      position: fixed !important;
-      bottom: 10px !important;
-      right: 10px !important;
-  }
+        margin: auto;
+        margin-top: 50px;
+    }
 }
 
 // tablet

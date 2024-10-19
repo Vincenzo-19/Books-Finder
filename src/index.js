@@ -62,6 +62,9 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
         createCards(BOOKS_WITH_DESCRIPTION)
     } catch (error) {
         console.error('Errore durante il recupero dei dati:', error)
+
+        ERROR_MESSAGE.textContent = `Errore durante il recupero dei dati. Riprova più tardi!`
+        ERROR_MESSAGE.style.display = 'block'
     } finally {
         LOADER.style.display = 'none'
     }
