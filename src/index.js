@@ -6,7 +6,7 @@ import getBookDescription from '../src/js/utils/getBookDescription.js'
 
 const SEARCH_BUTTON = document.querySelector('.search-button')
 const LOADER = document.getElementById('loader')
-const ERROR_MESSAGE = document.getElementById('error-message')
+let errorMessage = document.getElementById('error-message')
 
 SEARCH_BUTTON.addEventListener('click', async (event) => {
     event.preventDefault()
@@ -16,7 +16,7 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
         .value.toLowerCase()
 
     LOADER.style.display = 'block'
-    ERROR_MESSAGE.style.display = 'none'
+    errorMessage.style.display = 'none'
 
     // controllo input se è vuoto oppure se contiene un numero
     if (
@@ -24,10 +24,10 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
         !isNaN(subjectInput) ||
         subjectInput.length < 4
     ) {
-        ERROR_MESSAGE.textContent = `L'input inserito è errato! Inserisci un genere valido, ad es. 'Fantasy'`
-        ERROR_MESSAGE.style.display = 'block'
+        errorMessage.textContent = `L'input inserito è errato! Inserisci un genere valido, ad es. 'Fantasy'`
+        errorMessage.style.display = 'block'
         setTimeout(() => {
-            ERROR_MESSAGE.style.display = 'none'
+            errorMessage.style.display = 'none'
         }, 3000)
         LOADER.style.display = 'none'
         return
@@ -42,10 +42,10 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
 
         // controllo se il genere esiste
         if (!books.length) {
-            ERROR_MESSAGE.textContent = `Il genere inserito non esiste!`
-            ERROR_MESSAGE.style.display = 'block'
+            errorMessage.textContent = `Il genere inserito non esiste!`
+            errorMessage.style.display = 'block'
             setTimeout(() => {
-                ERROR_MESSAGE.style.display = 'none'
+                errorMessage.style.display = 'none'
             }, 3000)
             LOADER.style.display = 'none'
             return
@@ -63,8 +63,8 @@ SEARCH_BUTTON.addEventListener('click', async (event) => {
     } catch (error) {
         console.error('Errore durante il recupero dei dati:', error)
 
-        ERROR_MESSAGE.textContent = `Errore durante il recupero dei dati. Riprova più tardi!`
-        ERROR_MESSAGE.style.display = 'block'
+        errorMessage.textContent = `Errore durante il recupero dei dati. Riprova più tardi!`
+        errorMessage.style.display = 'block'
     } finally {
         LOADER.style.display = 'none'
     }
