@@ -7,7 +7,7 @@
 
 <p>Qui sotto c'è il link per il Books Finder⬇️</p>
 
-https://vincenzo-19.github.io/Books-Finder/
+https://vnbooksfinder.netlify.app/
 
 <p>Qui sotto c'è il link per la presentazione⬇️</p>
 
