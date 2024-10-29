@@ -11,7 +11,7 @@ https://vnbooksfinder.netlify.app/
 
 <p>Qui sotto c'è il link per la presentazione⬇️</p>
 
-https://1drv.ms/b/c/2151af0b03d46d87/EcWqzZL90c5KjNPjc-jD8oQBEpDlIZM7QUPLIX8ERGXRcQ?e=xZ9pYz
+https://1drv.ms/b/c/2151af0b03d46d87/EYciub9ARMBNnYaHVCbLl64BxfKXd9WFWoZOBIL5BAfKbw?e=4UwlmB
 
 <h2>Tecnologie utilizzate</h2>
 
